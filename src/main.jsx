@@ -1,22 +1,20 @@
 import React from 'react'
 
 export default function Main() {
-    const ingredients= ["Chicken", "Oregano", "Tomatoes"]
+    const [ingredients, setIngredients] = React.useState ([])
     const ingredientsList= ingredients.map( ingredient =>  <li key={ingredient}>{ingredient}</li>)
 
-    function handlerSubmit(event){
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
+
+    function addIngredient(formData){
         const newIngredient = formData.get("ingredient")
-        ingredients.push(newIngredient) 
-        console.log(ingredients)
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
     }
-    
+
   return (
     <main>
-      <form className='add-ingredient-form '>
+      <form action={addIngredient} className='add-ingredient-form '>
         <input type="text" name='ingredient' placeholder='e.g. oregano' />
-        <button onSubmit={handlerSubmit}> Add ingredient</button>
+        <button> Add ingredient</button>
       </form>
       <ul>
         {ingredientsList}
