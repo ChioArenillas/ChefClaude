@@ -11,7 +11,7 @@ export default function Main() {
     }
 
     const [recipeShown, setRecipeShown] = useState(false)
-    function showRerecipe() {
+    function toggleRerecipeShown() {
         setRecipeShown(prevRecipeShow => !prevRecipeShow)
     }
 
@@ -31,7 +31,7 @@ export default function Main() {
                                 <h3>Ready for a recipe?</h3>
                                 <p>Generate a recipe from your list of ingredients.</p>
                             </div>
-                            <button onClick={showRerecipe}>Get a recipe</button>
+                            <button onClick={toggleRerecipeShown}>Get a recipe</button>
                         </div>
                     }
                 </section>
